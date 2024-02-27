@@ -3,5 +3,38 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+    "mfe-shared-services-test": {
+      "projectType": "library",
+      "root": "projects/mfe-shared-services-test",
+      "sourceRoot": "projects/mfe-shared-services-test/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/mfe-shared-services-test/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/mfe-shared-services-test/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/mfe-shared-services-test/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/mfe-shared-services-test/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    }
   }
 }
